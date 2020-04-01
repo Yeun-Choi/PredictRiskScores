@@ -41,7 +41,7 @@ This is an R package featuring functions for generating PREDICT cardiovascular d
 ### Installation
 To install package:
 ```r
-remotes::install_github("billy-nz/PredictRiskScores")
+remotes::install_github("VIEW2020/PredictRiskScores")
 ```
 
 To load the package:
