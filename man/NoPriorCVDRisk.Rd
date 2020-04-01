@@ -126,15 +126,15 @@ with 1 being the least deprived and 5 being the most deprived.
 
 \examples{
 # As Calculator (dataset not provided)
-NoPriorCVDRisk(sex="F", age=65, eth="Indian", smoker=0, nzdep=5,  diabetes=0,
-               af=0, familyhx=1, lld=1, athrombi=1, bpl=1, sbp=118, tchdl=3.3)
+NoPriorCVDRisk(sex=F, age=30, eth=M, exsmoker=0, smoker=TRUE, nzdep=3, diabetes=Y,
+               af=F, familyhx=1, lld=Y, athrombi=yes, bpl=T, sbp=150, tchdl=5)
 
 NoPriorCVDRisk(sex=1, age=82, eth="Asian", exsmoker=NA, smoker=Y, nzdep=4, diabetes=N,
-               af=1, familyhx=1, lld=T, athrombi=F, bpl=0, sbp=140, tchdl=3.3, dp = 5,
-               allow.age = FALSE, allow.na = FALSE)
+               af=1, familyhx=1, lld=T, athrombi=F, bpl=0, sbp=140, tchdl=3.3,
+               dp = 5, allow.age = FALSE, allow.na = FALSE)
 
 # As a vectoriser (dataset provided)
-NoPriorCVDRisk(dat=TEST, sex=sex, age=age, eth=eth, nzdep=nzdep, exsmoker=smoker,
+NoPriorCVDRisk(dat=TEST, sex=sex, age=age, eth=eth, nzdep=nzdep, exsmoker=exsmoker,
                smoker=smoker,  diabetes=diabetes, af=af, familyhx=familyhx, lld=lld,
                athrombi=athromb, bpl=bpl, sbp=sbp, tchdl=tchdl, allow.na =TRUE)
 
