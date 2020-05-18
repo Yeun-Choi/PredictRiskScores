@@ -49,6 +49,9 @@ To load the package:
 library(PredictRiskScores)
 ```
 ### Usage
+#### Exclusions
+<a href="https://github.com/VIEW2020/PredictRiskScores/wiki" target="_blank">See Wiki</a> for details regarding exclusion critiera as each function is only applicable to specific populations. For example, primary prevention equations for estimating CVD risk should be implemented on a population without CVD, vis-à-vis `NoPriorCVDRisk`, `NoPriorCVDRisk_BMI`, `NoPriorCVDRisk_Policy`, and `NoPriorCVDBleedRisk`. Further, CVD risk can be estimated for people without both CVD and diabetes using `NoPriorT2DRisk`. For secondary prevention, estimating subsequent CVD risk should be implmented on a population with prior CVD, vis-à-vis `PostCVDRisk` and `PostACSRisk`. 
+
 
 #### One-off Calculator
 Each function can be used as either a calculator or vectoriser. When used as a one-off calculator, a dataset is not required. This can be handy when checking the risk estimate for 
