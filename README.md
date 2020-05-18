@@ -149,6 +149,9 @@ library(PredictRiskScores)
 
 ### Maintainer / Developer 
 - Billy Wu / billy.wu@auckland.ac.nz
+### Contributor / Tester 
+- Catherine Choi / yeunhyang.choi@auckland.ac.nz
+
 
 ### See Also
 I built a web-based risk calculator using the bleeding risk equation developed by Selak et al (2019) and the general CVD risk equation developed by Pylypchuk et al (2018), to provides clinicians with an individualised estimate of the CVD benefit and bleeding harms of aspirin for their patients without established CVD. [Full Article](https://annals.org/aim/fullarticle/2751452/personalized-prediction-cardiovascular-benefits-bleeding-harms-from-aspirin-primary-prevention).
