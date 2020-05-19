@@ -35,7 +35,7 @@ This is an R package featuring functions for generating PREDICT cardiovascular d
     [Full Article](https://heart.bmj.com/content/103/12/891.1)
     
 7. `PostACSRisk` 
-    creates a 5 year absolute risk for people for people who have experienced an ACS event. Published in heart (Poppe et al. 2019).
+    creates a 5 year absolute risk for people for people who have experienced an ACS event. Published in Heart (Poppe et al. 2019).
     [Full Article](https://heart.bmj.com/content/early/2019/12/10/heartjnl-2019-315809.full)
 
 ### Installation
@@ -104,7 +104,15 @@ DATA$riskscores <- NoPriorCVDRisk(dat=DATA, sex=sex, age=age, eth=ethnicity, exs
                                   athrombi=athrombotics, bpl=bpl, sbp=sbp, tchdl=tchdl)l)
 ```
 
-#### Integration with `data.table` and `dplyr`
+### Further Arguements
+Each function contains 3 dot parameters: `dp`, `allow.age`, and `allow.na`. These arguments can be specified to change their default settings.
+
+- **Decimal Places** by default will return risk scores to 4 decimal places. The number of decimal places can be changed using the argument `dp`. For example, `dp = 6` will produce risk scores containing 6 decimal places. <br><br>
+- **Age Allowance** by default will return risk scores for those between 18 and 110 years. Any age inputs outside of this range will return and `NA`. Ages 18 - 29 are calculated as 30; and 80 - 110 as 79. If `allow.age` is set to `FALSE`, then age values between 30 and 74 must be provided, else `NA` is returned as the risk score. **Note!** For equations involving prior CVD (i.e.  `PostCVDRisk` and `PostACSRisk`), age values between 30 and 79 must be provided if `allow.age` is set to `FALSE`, else `NA` is returned as the risk score.  <br><br>
+- **Missing Allowance** by default will return risk scores where the missing values are treated as `0`, `No`, or `FALSE`. This applies only to binary variables including smoking status. If `allow.na` is set to `FALSE`, then binary inputs including smoking status must have a value, else `NA` will be returned as the risk score.
+
+
+### Integration with `data.table` and `dplyr`
 The suite of functions in this package can be integrated into both `data.table` and `dplyr`. For example, when datasets are extremely large, consider 
 using `data.table` along with the `:=` notation. In the example below, a new column called `riskscore` is created.
 The `data.table` syntax might seem confusing at first but it offers fast and efficient performance.
@@ -125,14 +133,6 @@ DATA %>%
                                     nzdep=nzdep, diabetes=diab_status, af=hx_af, familyhx=familyhx, lld=lld,
                                     athrombi=athrombotics, bpl=bpl, sbp=sbp, tchdl=tchdl))
 ```
-
-#### Further Arguements
-Each function contains 3 dot parameters: `dp`, `allow.age`, and `allow.na`. A function will:
-
-- by default return risk scores to 4 decimal places. The number of decimal places can be changed using the argument `dp`. For example, `dp = 6` will produce risk scores containing 6 decimal places. 
--   by default return risk scores for people between 18 and 110 years of age. Ages 18 - 29 are calculated as 30; and 80 - 110 as 79. However, the risk prediction equations were developed from a cohort of people aged 30 to 74 years. Using the argument `allow.age` will determine whether a function is applied to ages outside of 30 - 74. If `allow.age` is set to `FALSE`, then age values between 30 and 74 must be provided, else `NA` is returned as the risk score. 
--   by default return risk scores where the missing values `NA` is treated as `0`, `No`, or `FALSE`. This applies only to binary variables including smoking status. If `allow.na` is set to `FALSE`, then binary inputs including smoking status must have a value, else `NA` will be returned as the risk score.
-
 
 #### R Documentation
 ```r
@@ -161,6 +161,6 @@ I built a web-based risk calculator using the bleeding risk equation developed b
 ### Coming Soon
 -	Estimate 5 year CVD risk in people with severe mental illness
 -   Estimate 5 year diabetes risk in people without established diabetes
--   Estimate 5 year acute CVD risk in people with established ACS
--   Estimate 5 year acute bleeding risk in people with established ACS
+-   Estimate 1 year acute CVD risk in people with established ACS
+-   Estimate 1 year acute bleeding risk in people with established ACS
 
