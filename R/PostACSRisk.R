@@ -1,4 +1,4 @@
-#' PREDICT CVD (2019) Risk Score for People After an ACS Event
+#' PREDICT CVD (2020) Risk Score for People After an ACS Event
 #'
 #' \code{PostACSRisk} calculates the 5 year absolute risk of cardiovascular disease (CVD) for people who have experienced an acute coronary syndrome (ACS) event.
 #' It is not intended to be used in the acute phase. The outcome of future CVD is defined as hospitalisation for acute coronary syndrome, heart failure, stroke or
@@ -216,51 +216,50 @@ PostACSRisk <- function(dat, sex, age, eth, nzdep, smoker, diabetes, af, hf, bpl
   values <- c(demo.vals, bin.vals, sbp, num.vals, bmi, scr, hba1c, acsdays, acstype) # Order sensitive!
 
   # Coefficients
-  coeffs <- list(
-    male          = 0.070108294,
-    age50_59      = 0.101907023,
-    age60_69      = 0.385735211,
-    age70_79      = 0.665588277,
-    maori         = 0.090076398,
-    pacific       = -0.026195857,
-    indian        = 0.032579054,
-    asian         = -0.310811716,
-    smoker        = 0.253474601,
-    nzdep         = 0.091394060,
-    diabetes      = 0.278017733,
-    af            = 0.285378352,
-    hf            = 0.687503944,
-    bplower       = 0.170906191,
-    lipidlower    = -0.029601692,
-    bloodthin     = 0.005888522,
-    sbplt100      = 0.102472311,
-    sbp120_140    = -0.064080362,
-    sbp140_160    = -0.006568964,
-    sbpge160      = 0.136227657,
-    tchdl         = 0.064230206,
-    bmilt20       = -0.050627926,
-    bmi20_25      = 0.011668190,
-    bmi30_35      = -0.021161519,
-    bmi35_40      = -0.035571412,
-    bmige40       = -0.012558351,
-    bmimiss       = 0.012687985,
-    creat100_149  = 0.197880356,
-    creatge150    = 0.531777765,
-    creatmiss     = 0.020199113,
-    hba1c40_65    = 0.099219955,
-    hba1cge65     = 0.356544954,
-    hba1cmiss     = 0.110588511,
-    prior6m       = 0.284562205,
-    prior6_12m    = 0.194750339,
-    prior5plus    = -0.128308825,
-    nstemi        = -0.035132993,
-    stemi         = -0.169336414
-    )
-
-  # Calculations
-  value.score <- Map("*", values, coeffs)
-  sum.score   <- Reduce("+", value.score)
-  risk.score  <- (1 - 0.7431991 ^ exp(sum.score - 1.48214))
+    coeffs <- list(
+      male          = 0.081610672,
+      age50_59      = 0.119286797,
+      age60_69      = 0.404605239,
+      age70_79      = 0.712618612,
+      maori         = 0.105383462,
+      pacific       = -0.006558638,
+      indian        = 0.023096928,
+      asian         = -0.343475180 ,
+      smoker        = 0.269219624,
+      nzdep         = 0.092195916,
+      diabetes      = 0.300077392,
+      af            = 0.277377484,
+      hf            = 0.721588644,
+      bplower       = 0.175886952,
+      lipidlower    = -0.060366705,
+      bloodthin     = 0.007374964,
+      sbplt100      = 0.122860149,
+      sbp120_140    = -0.048141686,
+      sbp140_160    = -0.012938273,
+      sbpge160      = 0.148431220,
+      tchdl         = 0.063583597,
+      bmilt20       = -0.016809677,
+      bmi20_25      = 0.024913478,
+      bmi30_35      = -0.038068191,
+      bmi35_40      = -0.043920808,
+      bmige40       = -0.021965124,
+      bmimiss       = 0.053631133,
+      creat100_149  = 0.193636939,
+      creatge150    = 0.595222744,
+      creatmiss     = 0.026249535,
+      hba1c40_65    = 0.097170489,
+      hba1cge65     = 0.350079360,
+      hba1cmiss     = 0.108350343,
+      prior6m       = 0.312352943,
+      prior6_12m    = 0.217361972,
+      prior5plus    = -0.127669592,
+      nstemi        = -0.019439784,
+      stemi         = -0.162354686)
+    
+    # Calculations
+    value.score <- Map("*", values, coeffs)
+    sum.score   <- Reduce("+", value.score)
+    risk.score  <- (1 - 0.7375466 ^ exp(sum.score - 1.538164))
 
   rounded.val <- as.numeric(formatC(round(risk.score, dp),
                                     format = 'f',
