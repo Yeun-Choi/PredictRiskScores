@@ -1,4 +1,4 @@
-#' PREDICT CVD (2019) Risk Score for People After an ACS Event
+#' PREDICT CVD (2020) Risk Score for People After an ACS Event
 #'
 #' \code{PostACSRisk} calculates the 5 year absolute risk of cardiovascular disease (CVD) for people who have experienced an acute coronary syndrome (ACS) event.
 #' It is not intended to be used in the acute phase. The outcome of future CVD is defined as hospitalisation for acute coronary syndrome, heart failure, stroke or
