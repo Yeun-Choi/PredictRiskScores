@@ -179,8 +179,8 @@ PostCVDRisk <- function(dat, sex, age, eth, diabetes, smoker, mi_stroke, hf, bmi
                   sbp140_160 = +(input$sbp >= 140 & input$sbp <= 159),
                   sbpge160   = +(input$sbp >= 160))
 
-  bmi     <- list(bmilt20    = +(input$bmi < 20 & !is.na(input$bmi)),
-                  bmi20_25   = +(input$bmi %in% 20:24 & !is.na(input$bmi)),
+  bmi     <- list(bmilt20    = +(input$bmi < 18.5 & !is.na(input$bmi)),
+                  bmi20_25   = +(input$bmi %in% 18.5:24 & !is.na(input$bmi)),
                   bmi30_35   = +(input$bmi %in% 30:34 & !is.na(input$bmi)),
                   bmi35_40   = +(input$bmi %in% 35:39 & !is.na(input$bmi)),
                   bmige40    = +(input$bmi >= 40 & !is.na(input$bmi)))
