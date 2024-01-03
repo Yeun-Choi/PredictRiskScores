@@ -223,7 +223,7 @@ PriorT2DRisk <- function(dat, sex, age, eth, nzdep, smoker, af, familyhx, lld, a
   values$egfr[m.ind] <- values$egfr[m.ind] - 88.788314
 
   values$acr[f.ind] <- log((acr + 0.0099999997764826) / 1000) + 4.314302355
-  values$acr[m.ind] <- log((acr + 0.0099999997764826) / 1000) + 4.275179000
+  values$acr[m.ind] <- log((acr + 0.0099999997764826) / 1000) + 4.275179379
 
   values$hba1c[f.ind] <- values$hba1c[f.ind] - 63.618622
   values$hba1c[m.ind] <- values$hba1c[m.ind] - 63.889441
